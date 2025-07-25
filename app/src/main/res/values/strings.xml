@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TPMS Monitor</string>
+    <string name="settings_menu">Settings</string>
+    <string name="info_main">info</string>
+    <string name="initial_time_menu">00:00:00</string>
+    <string name="initial_raw_menu">000 kPa (00.0 PSI)</string>
+    <string name="initial_temperature_menu">00°C</string>
+    <string name="status_hint">Status: Green = OK | Orange = out of range | Red = no data 5 min</string>
+    <string name="signal_main">-00dBm</string>
+</resources>
