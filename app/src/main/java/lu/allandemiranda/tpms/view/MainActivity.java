@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements UiLogger.Sink {
     }
 
     private void bindViews() {
-        View root = findViewById(R.id.rootLayout);
+//        View root = findViewById(R.id.rootLayout);
         tvDebug = findViewById(R.id.tvDebug);
         if (Config.DEBUG_UI) {
             findViewById(R.id.debugScroll).setVisibility(View.VISIBLE);
