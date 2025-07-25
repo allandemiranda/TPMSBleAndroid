@@ -27,7 +27,7 @@ public final class TpmsDecoder {
             if (i < 11) mac.append(":");
         }
 
-        UiLogger.log("TPMS encontrado – Temp: " + temperature + "°C, Pressão: " + (pressureRaw - 100) + " raw, Status: " + status + ", MAC: " + mac);
+        UiLogger.log("TPMS encontrado – Temp: " + temperature + "°C, Pressão: " + pressureRaw + " raw, Status: " + status + ", MAC: " + mac);
 
         return new TpmsDecoder.TPMS(temperature, pressureRaw);
     }
