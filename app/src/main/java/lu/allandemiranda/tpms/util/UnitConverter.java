@@ -10,7 +10,7 @@ public final class UnitConverter {
         if (kpa == 0d) {
             return 0d;
         }
-        return (kpa / 6.89476) + 0.02;
+        return (kpa / 6.89476);
     }
 
     public static double kpaToBar(double kpa) {
