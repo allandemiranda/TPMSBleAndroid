@@ -21,7 +21,7 @@ public final class UnitConverter {
     }
 
     public static int pressureTpmsToKpa(int pRaw) {
-        int i = pRaw - 100;
+        int i = pRaw - 101;
         return Math.max(i, 0);
     }
 }
