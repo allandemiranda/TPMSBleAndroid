@@ -36,21 +36,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/initial_time_menu"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
 
             <TextView
                 android:id="@+id/tvFrontPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/initial_raw_menu"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
 
             <TextView
                 android:id="@+id/tvFrontTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/initial_temperature_menu"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -74,7 +77,7 @@
                 android:paddingTop="4dp"
                 android:text="@string/signal_main"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="24sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -97,21 +100,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/initial_time_menu"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
 
             <TextView
                 android:id="@+id/tvRearPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/initial_raw_menu"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
 
             <TextView
                 android:id="@+id/tvRearTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/initial_temperature_menu"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -135,7 +141,7 @@
                 android:paddingTop="4dp"
                 android:text="@string/signal_main"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="24sp" />
         </LinearLayout>
 
     </LinearLayout>

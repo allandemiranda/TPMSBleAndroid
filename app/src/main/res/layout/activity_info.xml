@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:text="@string/settings_menu"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:textSize="24sp" />
 
 </LinearLayout>

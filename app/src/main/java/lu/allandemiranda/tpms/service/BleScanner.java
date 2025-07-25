@@ -86,12 +86,6 @@ public class BleScanner {
             UiLogger.log("Thread interrompida");
         }
 
-        if (manufacturerDataList.isEmpty()) {
-            UiLogger.log("Nenhum MD encontrado");
-        } else {
-            UiLogger.log(manufacturerDataList.size() + " MDs encontrado");
-        }
-
         return manufacturerDataList;
     }
 }
