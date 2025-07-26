@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements UiLogger.Sink {
     private TextView tvRearTime, tvRearPressure, tvRearTemp, tvRearRssi;
     private ImageView dotRear;
     private TextView tvDebug;
+    private boolean isFrontSignalOut = false;
+    private boolean isRearSignalOut = false;
 
     private void updateTireState(Tpms[] tpms) {
         int frontStateColorLast = frontState.getColor(Config.FRONT_MIN_KPA, Config.FRONT_MAX_KPA);
@@ -89,29 +91,32 @@ public class MainActivity extends AppCompatActivity implements UiLogger.Sink {
         }
 
         int frontStateColor = frontState.getColor(Config.FRONT_MIN_KPA, Config.FRONT_MAX_KPA);
-        if (frontStateColor != frontStateColorLast) {
-            dotFront.setColorFilter(ContextCompat.getColor(getMainActivity(), frontStateColor));
-            if (R.color.yellow == frontStateColor) {
-                NotificationHelper.notifySignalLost(getMainActivity(), true);
-                UiLogger.log("FRONT SIGNAL LOST");
-            } else if (R.color.orange == frontStateColor && frontState.getPressureKpa() < Config.FRONT_MIN_KPA) {
-                NotificationHelper.notifyPressure(getMainActivity(), true, frontState.getPressureKpa(), Config.FRONT_MIN_KPA, Config.FRONT_MAX_KPA);
-            } else if (R.color.orange == frontStateColor && frontState.getPressureKpa() > Config.FRONT_MAX_KPA) {
-                NotificationHelper.notifyPressure(getMainActivity(), true, frontState.getPressureKpa(), Config.FRONT_MIN_KPA, Config.FRONT_MAX_KPA);
-            }
+        dotFront.setColorFilter(ContextCompat.getColor(getMainActivity(), frontStateColor));
+        if (R.color.blue == frontStateColor && !isFrontSignalOut) {
+            NotificationHelper.notifySignalLost(getMainActivity(), true);
+            UiLogger.log("XXX-- FRONT SIGNAL LOST --XXX");
+            isFrontSignalOut = true;
+        } else if (R.color.blue != frontStateColor && isFrontSignalOut) {
+            UiLogger.log(">>>-- FRONT SIGNAL BACK --<<<");
+            isFrontSignalOut = false;
+        }
+        if (frontStateColor != frontStateColorLast && R.color.orange == frontStateColor) {
+            NotificationHelper.notifyPressure(getMainActivity(), true, frontState.getPressureKpa(), Config.FRONT_MIN_KPA, Config.FRONT_MAX_KPA);
         }
 
+
         int rearStateColor = rearState.getColor(Config.REAR_MIN_KPA, Config.REAR_MAX_KPA);
-        if (rearStateColor != rearStateColorLast) {
-            dotRear.setColorFilter(ContextCompat.getColor(getMainActivity(), rearStateColor));
-            if (R.color.yellow == rearStateColor) {
-                NotificationHelper.notifySignalLost(getMainActivity(), true);
-                UiLogger.log("REAR SIGNAL LOST");
-            } else if (R.color.orange == rearStateColor && rearState.getPressureKpa() < Config.REAR_MIN_KPA) {
-                NotificationHelper.notifyPressure(getMainActivity(), true, rearState.getPressureKpa(), Config.REAR_MIN_KPA, Config.REAR_MAX_KPA);
-            } else if (R.color.orange == rearStateColor && rearState.getPressureKpa() > Config.REAR_MAX_KPA) {
-                NotificationHelper.notifyPressure(getMainActivity(), true, rearState.getPressureKpa(), Config.REAR_MIN_KPA, Config.REAR_MAX_KPA);
-            }
+        dotRear.setColorFilter(ContextCompat.getColor(getMainActivity(), rearStateColor));
+        if (R.color.blue == rearStateColor && !isRearSignalOut) {
+            NotificationHelper.notifySignalLost(getMainActivity(), false);
+            UiLogger.log("XXX-- REAR SIGNAL LOST --XXX");
+            isRearSignalOut = true;
+        } else if (R.color.blue != rearStateColor && isRearSignalOut) {
+            UiLogger.log(">>>-- REAR SIGNAL BACK --<<<");
+            isRearSignalOut = false;
+        }
+        if (rearStateColor != rearStateColorLast && R.color.orange == rearStateColor) {
+            NotificationHelper.notifyPressure(getMainActivity(), false, rearState.getPressureKpa(), Config.REAR_MIN_KPA, Config.REAR_MAX_KPA);
         }
     }
 
@@ -161,6 +166,8 @@ public class MainActivity extends AppCompatActivity implements UiLogger.Sink {
         }
 
         requestAllPermissions();
+
+        UiLogger.log("Starting...");
     }
 
     private MainActivity getMainActivity() {

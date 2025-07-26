@@ -10,7 +10,7 @@ public final class Config {
     public static final int REAR_MIN_KPA = 225;
     public static final int REAR_MAX_KPA = 310;
     // Timeout – if no packet for this period the signal is considered lost
-    public static final long SIGNAL_TIMEOUT_MS = 5 * 60 * 1000L; // 5 minutes
+    public static final long SIGNAL_TIMEOUT_MIN = 1; // 5 minutes
     public static final boolean DEBUG_UI = true;
 
     private Config() {

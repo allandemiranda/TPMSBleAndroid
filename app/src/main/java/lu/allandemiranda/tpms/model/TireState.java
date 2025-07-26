@@ -3,6 +3,7 @@ package lu.allandemiranda.tpms.model;
 import java.time.LocalDateTime;
 
 import lu.allandemiranda.tpms.R;
+import lu.allandemiranda.tpms.config.Config;
 
 public class TireState {
     private LocalDateTime lastUpdate = LocalDateTime.MIN;
@@ -45,8 +46,8 @@ public class TireState {
     public int getColor(int minKpa, int maxKpa) {
         if (this.lastUpdate == LocalDateTime.MIN) {
             return R.color.red;
-        } else if (lastUpdate.isBefore(LocalDateTime.now().minusMinutes(5))) {
-            return R.color.yellow;
+        } else if (lastUpdate.isBefore(LocalDateTime.now().minusMinutes(Config.SIGNAL_TIMEOUT_MIN))) {
+            return R.color.blue;
         } else if (pressureKpa > maxKpa || pressureKpa < minKpa) {
             return R.color.orange;
         } else {
